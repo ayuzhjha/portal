@@ -10,37 +10,53 @@ export function CampusMapSection() {
   const [selectedVenue, setSelectedVenue] = useState<string | null>(null);
 
   const venueInfo: Record<string, { description: string; facilities: string[] }> = {
-    'student-center': {
-      description: 'Main hub for registrations and cultural events',
-      facilities: ['Registration Desk', 'Food Court', 'Seating Area', 'WiFi'],
+    'mini-auditorium': {
+      description: 'Inauguration Ceremony (Day 1) & Cultural Events + Closing Ceremony (Day 3)',
+      facilities: ['Main Stage', 'Sound System', 'AC', 'Seating'],
     },
-    'auditorium': {
-      description: 'Large venue for performances and competitions',
-      facilities: ['Main Stage', 'Sound System', 'Seating for 500+', 'AC'],
+    'scse-classrooms': {
+      description: '24-Hour Hackathon venue — Day 1 start (02:00 PM) through Day 2 conclusion (02:00 PM)',
+      facilities: ['Workstations', 'Power Sockets', 'WiFi', 'Whiteboard'],
     },
-    'academic-block-1': {
-      description: 'Technical events and workshops',
-      facilities: ['Computer Labs', 'Classrooms', 'Projectors', 'WiFi'],
+    'scse-lab': {
+      description: 'Coding Event on Day 1 (02:30 PM – 05:00 PM)',
+      facilities: ['Computer Lab', 'Projector', 'WiFi', 'AC'],
     },
-    'academic-block-2': {
-      description: 'Hackathon and coding competitions',
-      facilities: ['Large Hall', 'Power Sockets', 'WiFi', 'Seating'],
+    'boys-common-room': {
+      description: 'Robo Line Follower (Day 1) & Poster Presentation (Day 2)',
+      facilities: ['Open Floor', 'Seating', 'Power Points', 'WiFi'],
     },
-    'sports-ground': {
-      description: 'Robotics and sports tournaments',
-      facilities: ['Open Field', 'Equipment Storage', 'Viewing Stands'],
+    'quadrangle': {
+      description: 'Startup Showcase & Photo Booth across all 3 days',
+      facilities: ['Open Area', 'Stall Space', 'Photo Booth', 'Seating'],
     },
-    'gaming-arena': {
-      description: 'Esports tournaments',
-      facilities: ['Gaming PCs', 'High-Speed Internet', 'Gaming Chairs'],
+    'amphitheatre': {
+      description: 'Robo Sumo & Robo Obstacles on Day 2 (10:00 AM – 05:00 PM)',
+      facilities: ['Arena Space', 'Seating', 'Viewing Stands'],
     },
-    'faculty-hostel': {
-      description: 'Food vendors and rest area',
-      facilities: ['Food Stalls', 'Seating', 'Restrooms', 'Parking'],
+    'football-ground': {
+      description: 'Futsal Tournament on Day 2 & Day 3',
+      facilities: ['Football Turf', 'Equipment', 'Viewing Area', 'First Aid'],
     },
-    'campus-grounds': {
-      description: 'Open events like treasure hunt',
-      facilities: ['Large Area', 'Outdoor Seating', 'Parking', 'First Aid'],
+    'cr-315': {
+      description: 'FIFA Tournament (Esports) on Day 2 (02:00 PM – 05:00 PM)',
+      facilities: ['Gaming Setup', 'High-Speed Internet', 'AC', 'Chairs'],
+    },
+    'eh2-nab': {
+      description: 'Esports Event on Day 3 (09:00 AM – 02:00 PM)',
+      facilities: ['Gaming PCs', 'High-Speed Internet', 'AC'],
+    },
+    'food-stalls': {
+      description: 'Food Vendor Stalls for all participants & attendees (All 3 Days, 10 AM – 7:30 PM)',
+      facilities: ['Multiple Stalls', 'Seating Area', 'Restrooms'],
+    },
+    'main-auditorium-staircase': {
+      description: 'Jamming Session on Day 1 (07:00 PM – 08:00 PM)',
+      facilities: ['Open Space', 'Sound Setup', 'Ambient Lighting'],
+    },
+    'help-desk': {
+      description: 'Help & Registration Desk available all 3 days (09:00 AM – 05:00 PM)',
+      facilities: ['Registration', 'Information', 'Volunteer Support'],
     },
   };
 
@@ -73,7 +89,7 @@ export function CampusMapSection() {
           {/* Venues List */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-cyan-400 mb-6">Venues</h3>
-            <div className="space-y-3 max-h-96 overflow-y-auto pr-4">
+            <div className="space-y-3 max-h-96 overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {venues.map((venue) => (
                 <button
                   key={venue.id}
@@ -82,11 +98,10 @@ export function CampusMapSection() {
                       selectedVenue === venue.id ? null : venue.id
                     )
                   }
-                  className={`w-full text-left p-4 rounded-lg transition-all duration-300 glass hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/20 ${
-                    selectedVenue === venue.id
-                      ? 'border-pink-500 shadow-lg shadow-pink-500/20'
-                      : 'border-slate-700'
-                  }`}
+                  className={`w-full text-left p-4 rounded-lg transition-all duration-300 glass hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/20 ${selectedVenue === venue.id
+                    ? 'border-pink-500 shadow-lg shadow-pink-500/20'
+                    : 'border-slate-700'
+                    }`}
                 >
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />

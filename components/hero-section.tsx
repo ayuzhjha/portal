@@ -60,16 +60,13 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="space-y-12 float-up">
-          {/* Title */}
-          <div className="text-center space-y-4">
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter">
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-                SYNCHRONIZE 4.0
-              </span>
+          {/* Tagline */}
+          <div className="text-center space-y-1">
+            <h1 className="text-3xl md:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
+              Synchronize 4.0
             </h1>
-            <p className="text-lg md:text-xl text-cyan-300 font-mono">
-              // Initializing Ultimate Techfest Experience...
-            </p>
+            <p className="text-sm md:text-base font-mono text-cyan-300">Annual Technical Fest — SCSE, XIM University</p>
+            <p className="text-xs text-muted-foreground font-mono">📅 26 February – 28 February 2025</p>
           </div>
 
           {/* Arc Reactor Center */}
@@ -85,16 +82,16 @@ export function HeroSection() {
           {/* Stats Cards */}
           <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
             <div className="glass rounded-lg p-4 text-center hover:border-cyan-400/50 transition-colors">
-              <p className="text-2xl font-bold text-cyan-400">7</p>
-              <p className="text-sm text-muted-foreground">Event Types</p>
+              <p className="text-2xl font-bold text-cyan-400">3</p>
+              <p className="text-sm text-muted-foreground">Days</p>
             </div>
             <div className="glass rounded-lg p-4 text-center hover:border-cyan-400/50 transition-colors">
-              <p className="text-2xl font-bold text-pink-400">20+</p>
-              <p className="text-sm text-muted-foreground">Competitions</p>
+              <p className="text-2xl font-bold text-pink-400">12+</p>
+              <p className="text-sm text-muted-foreground">Events</p>
             </div>
             <div className="glass rounded-lg p-4 text-center hover:border-cyan-400/50 transition-colors">
-              <p className="text-2xl font-bold text-purple-400">₹2L+</p>
-              <p className="text-sm text-muted-foreground">Prizes</p>
+              <p className="text-2xl font-bold text-purple-400">SCSE</p>
+              <p className="text-sm text-muted-foreground">XIM University</p>
             </div>
           </div>
 
