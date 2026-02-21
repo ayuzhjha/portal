@@ -61,8 +61,8 @@ export function CampusMapSection() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-background via-slate-900/30 to-background py-20 px-4">
-      <div className="container mx-auto">
+    <section className="min-h-screen bg-gradient-to-b from-background via-slate-900/30 to-background py-16">
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6">
         {/* Section Header with Marvel Quote */}
         <SectionHeader
           title="Battlefield Layout"
@@ -71,7 +71,7 @@ export function CampusMapSection() {
         />
 
         {/* Map Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Map Image */}
           <div className="lg:col-span-2">
             <div className="glass rounded-2xl overflow-hidden hover-lift">
@@ -125,7 +125,7 @@ export function CampusMapSection() {
         {/* Selected Venue Details */}
         {selectedVenue && venueInfo[selectedVenue] && (
           <div className="mt-12 scale-in">
-            <div className="glass rounded-2xl p-8 border-l-4 border-pink-500">
+            <div className="glass rounded-2xl p-4 sm:p-8 border-l-4 border-pink-500">
               <div className="flex items-start gap-4 mb-6">
                 <Info className="w-6 h-6 text-pink-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -154,7 +154,7 @@ export function CampusMapSection() {
         )}
 
         {/* Campus Guide */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div className="glass rounded-xl p-6">
             <h4 className="text-xl font-bold text-cyan-400 mb-4">Getting Around</h4>
             <ul className="space-y-2 text-muted-foreground">
