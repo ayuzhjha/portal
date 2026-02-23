@@ -6,60 +6,95 @@ import { SectionHeader } from './section-header';
 
 export function VendorsSection() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-background via-slate-900/30 to-background py-16">
-      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6">
+    <section
+      className="py-16 sm:py-20 relative halftone-red"
+      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #120208 50%, #0D0D0D 100%)' }}
+    >
+      <div className="comic-divider" />
+
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 pt-10">
         <SectionHeader
           title="Vendors & Refuel"
-          subtitle="Fuel your day with amazing food and exclusive merchandise from our premium partners"
+          subtitle="Fuel up between battles — premium food stalls &amp; exclusive merch await."
           emoji="🍽️"
         />
 
-        {/* Food Vendors */}
+        {/* ── Food Vendors ── */}
         <div className="mb-12">
-          <h3 className="text-xl sm:text-3xl font-bold text-cyan-400 mb-4 sm:mb-8">🍕 Food Vendors</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Sub-section label */}
+          <div className="flex items-center gap-3 mb-6">
+            <span
+              className="font-bangers text-[#FFD700] tracking-widest"
+              style={{ fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', textShadow: '2px 2px 0 #111' }}
+            >
+              🍕 FOOD VENDORS
+            </span>
+            <div className="flex-1 h-0.5 bg-[#E8192C]/40" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {vendors.food.map((vendor, index) => (
               <div
                 key={vendor.id}
-                className="glass rounded-xl overflow-hidden hover-lift group"
+                className="comic-panel hover-lift group overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="bg-gradient-to-r from-orange-600/20 to-pink-600/20 border-b border-slate-700 p-4 sm:p-6">
-                  <h4 className="text-lg sm:text-2xl font-bold text-foreground mb-1">{vendor.name}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">{vendor.category}</p>
+                {/* Diagonal stripe header */}
+                <div className="stripe-header px-5 py-4 border-b-2 border-[#111]">
+                  <h4 className="font-bangers text-[#FFD700] tracking-wide"
+                    style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)' }}
+                  >
+                    {vendor.name}
+                  </h4>
+                  <p className="font-oswald text-[#F5F5F0]/70 text-xs uppercase tracking-widest">
+                    {vendor.category}
+                  </p>
                 </div>
-                <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                    <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
-                    <span className="text-foreground">{vendor.location}</span>
+
+                {/* Details */}
+                <div className="p-4 sm:p-5 space-y-2.5">
+                  <div className="flex items-center gap-3 text-xs sm:text-sm text-[#A0A0A0]">
+                    <MapPin className="w-4 h-4 text-[#E8192C] flex-shrink-0" />
+                    <span className="font-oswald">{vendor.location}</span>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-400 flex-shrink-0" />
-                    <span className="text-foreground">{vendor.hours}</span>
+                  <div className="flex items-center gap-3 text-xs sm:text-sm text-[#A0A0A0]">
+                    <Clock className="w-4 h-4 text-[#FFD700] flex-shrink-0" />
+                    <span className="font-oswald">{vendor.hours}</span>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
-                    <a href={`tel:${vendor.phone}`} className="text-cyan-400 hover:text-pink-400">
+                  <div className="flex items-center gap-3 text-xs sm:text-sm">
+                    <Phone className="w-4 h-4 text-[#F5F5F0] flex-shrink-0" />
+                    <a
+                      href={`tel:${vendor.phone}`}
+                      className="font-oswald text-[#E8192C] hover:text-[#FFD700] transition-colors"
+                    >
                       {vendor.phone}
                     </a>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm pt-2 border-t border-slate-700">
-                    <DollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
-                    <span className="text-foreground">Min: {vendor.minOrder}</span>
+                  <div className="flex items-center gap-3 text-xs sm:text-sm text-[#A0A0A0] border-t-2 border-[#333] pt-2.5">
+                    <DollarSign className="w-4 h-4 text-[#4CAF50] flex-shrink-0" />
+                    <span className="font-oswald">Min Order: {vendor.minOrder}</span>
                   </div>
+
+                  {/* Special offer badge */}
                   {vendor.specialOffer && (
-                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-2 sm:p-3 mt-2">
-                      <p className="text-yellow-400 text-xs sm:text-sm font-semibold">⭐ {vendor.specialOffer}</p>
+                    <div
+                      className="border-2 border-[#FFD700] bg-[#FFD700]/10 rounded p-2.5 mt-1"
+                    >
+                      <p className="font-oswald font-semibold text-[#FFD700] text-xs uppercase tracking-wider">
+                        ⭐ {vendor.specialOffer}
+                      </p>
                     </div>
                   )}
                 </div>
-                <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+
+                {/* Download button */}
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5">
                   <a
                     href={vendor.menuLink}
                     download
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-r from-cyan-500/20 to-pink-500/20 text-cyan-400 border border-cyan-500/30 hover:border-pink-500/30 hover:text-pink-400 transition-all duration-300 text-xs sm:text-sm font-semibold"
+                    className="action-btn w-full justify-center text-xs sm:text-sm"
                   >
-                    <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <Download className="w-3.5 h-3.5" />
                     Download Menu
                   </a>
                 </div>
@@ -68,49 +103,74 @@ export function VendorsSection() {
           </div>
         </div>
 
-        {/* Merchandise — only shown when items exist */}
+        {/* ── Merchandise ── */}
         {vendors.other.length > 0 && (
           <div>
-            <h3 className="text-xl sm:text-3xl font-bold text-purple-400 mb-4 sm:mb-8">🎮 Merchandise</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="flex items-center gap-3 mb-6">
+              <span
+                className="font-bangers text-[#E8192C] tracking-widest"
+                style={{ fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', textShadow: '2px 2px 0 #111' }}
+              >
+                🎮 MERCHANDISE
+              </span>
+              <div className="flex-1 h-0.5 bg-[#FFD700]/40" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {vendors.other.map((vendor: (typeof vendors.other)[number], index: number) => (
                 <div
                   key={vendor.id}
-                  className="glass rounded-xl overflow-hidden hover-lift group"
+                  className="comic-panel hover-lift group overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-b border-slate-700 p-4 sm:p-6">
-                    <h4 className="text-lg sm:text-2xl font-bold text-foreground mb-1">{vendor.name}</h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground">{vendor.category}</p>
+                  <div
+                    className="px-5 py-4 border-b-2 border-[#111]"
+                    style={{
+                      background: 'repeating-linear-gradient(-45deg, #1a0040, #1a0040 8px, #0d0028 8px, #0d0028 16px)',
+                    }}
+                  >
+                    <h4 className="font-bangers text-[#FFD700] tracking-wide"
+                      style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)' }}
+                    >
+                      {vendor.name}
+                    </h4>
+                    <p className="font-oswald text-[#F5F5F0]/70 text-xs uppercase tracking-widest">
+                      {vendor.category}
+                    </p>
                   </div>
-                  <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
-                    <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                      <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
-                      <span className="text-foreground">{vendor.location}</span>
+
+                  <div className="p-4 sm:p-5 space-y-2.5">
+                    <div className="flex items-center gap-3 text-xs sm:text-sm text-[#A0A0A0]">
+                      <MapPin className="w-4 h-4 text-[#E8192C] flex-shrink-0" />
+                      <span className="font-oswald">{vendor.location}</span>
                     </div>
-                    <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                      <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-400 flex-shrink-0" />
-                      <span className="text-foreground">{vendor.hours}</span>
+                    <div className="flex items-center gap-3 text-xs sm:text-sm text-[#A0A0A0]">
+                      <Clock className="w-4 h-4 text-[#FFD700] flex-shrink-0" />
+                      <span className="font-oswald">{vendor.hours}</span>
                     </div>
-                    <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                      <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
-                      <a href={`tel:${vendor.phone}`} className="text-cyan-400 hover:text-pink-400">
+                    <div className="flex items-center gap-3 text-xs sm:text-sm">
+                      <Phone className="w-4 h-4 text-[#F5F5F0] flex-shrink-0" />
+                      <a href={`tel:${vendor.phone}`} className="font-oswald text-[#E8192C] hover:text-[#FFD700] transition-colors">
                         {vendor.phone}
                       </a>
                     </div>
                     {vendor.specialOffer && (
-                      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-2 sm:p-3 mt-2">
-                        <p className="text-yellow-400 text-xs sm:text-sm font-semibold">⭐ {vendor.specialOffer}</p>
+                      <div className="border-2 border-[#FFD700] bg-[#FFD700]/10 rounded p-2.5">
+                        <p className="font-oswald font-semibold text-[#FFD700] text-xs uppercase tracking-wider">
+                          ⭐ {vendor.specialOffer}
+                        </p>
                       </div>
                     )}
                   </div>
-                  <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+
+                  <div className="px-4 sm:px-5 pb-4 sm:pb-5">
                     <a
                       href={vendor.menuLink}
                       download
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 border border-purple-500/30 hover:border-pink-500/30 hover:text-pink-400 transition-all duration-300 text-xs sm:text-sm font-semibold"
+                      className="action-btn w-full justify-center text-xs sm:text-sm"
+                      style={{ background: '#9333ea' }}
                     >
-                      <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <Download className="w-3.5 h-3.5" />
                       Download Catalogue
                     </a>
                   </div>
@@ -120,6 +180,8 @@ export function VendorsSection() {
           </div>
         )}
       </div>
+
+      <div className="comic-divider mt-10" />
     </section>
   );
 }

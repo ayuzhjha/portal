@@ -61,20 +61,34 @@ export function CampusMapSection() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-background via-slate-900/30 to-background py-16">
-      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6">
-        {/* Section Header with Marvel Quote */}
+    <section
+      className="py-16 sm:py-20 relative"
+      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #0a1208 50%, #0D0D0D 100%)' }}
+    >
+      <div className="comic-divider" />
+
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 pt-10">
         <SectionHeader
           title="Battlefield Layout"
-          subtitle="Navigate the campus and find your event venues. Know the terrain, master the strategy."
+          subtitle="Navigate the campus — know the terrain before the battle begins."
           emoji="🗺️"
         />
 
-        {/* Map Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {/* Map Image */}
+        {/* ── Map + Venues grid ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+
+          {/* Map image — heavy comic frame */}
           <div className="lg:col-span-2">
-            <div className="glass rounded-2xl overflow-hidden hover-lift">
+            <div
+              className="comic-frame overflow-hidden hover-lift"
+              style={{ background: '#0D0D0D' }}
+            >
+              {/* Panel header */}
+              <div className="stripe-header px-4 py-2 border-b-2 border-[#111]">
+                <p className="font-bangers text-[#FFD700] tracking-widest text-base">
+                  🗺️ CAMPUS MAP — XIM UNIVERSITY
+                </p>
+              </div>
               <Image
                 src="/campus-map.png"
                 alt="Campus Map"
@@ -86,95 +100,139 @@ export function CampusMapSection() {
             </div>
           </div>
 
-          {/* Venues List */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-cyan-400 mb-6">Venues</h3>
-            <div className="space-y-3 max-h-96 overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              {venues.map((venue) => (
-                <button
-                  key={venue.id}
-                  onClick={() =>
-                    setSelectedVenue(
-                      selectedVenue === venue.id ? null : venue.id
-                    )
-                  }
-                  className={`w-full text-left p-4 rounded-lg transition-all duration-300 glass hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/20 ${selectedVenue === venue.id
-                    ? 'border-pink-500 shadow-lg shadow-pink-500/20'
-                    : 'border-slate-700'
-                    }`}
-                >
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div className="flex-1">
-                      <p className="font-semibold text-foreground">
-                        {venue.name}
-                      </p>
-                      {selectedVenue === venue.id && (
-                        <p className="text-xs text-muted-foreground mt-1">
-                          {venueInfo[venue.id]?.description}
+          {/* Venue list */}
+          <div>
+            <h3 className="font-bangers text-[#FFD700] tracking-widest mb-4"
+              style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', textShadow: '2px 2px 0 #111' }}
+            >
+              ⚑ VENUES
+            </h3>
+            <div
+              className="space-y-2 max-h-[480px] overflow-y-auto"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {venues.map((venue) => {
+                const isActive = selectedVenue === venue.id;
+                return (
+                  <button
+                    key={venue.id}
+                    onClick={() => setSelectedVenue(selectedVenue === venue.id ? null : venue.id)}
+                    className={`w-full text-left p-3 sm:p-4 transition-all duration-200 border-2 group
+                      ${isActive
+                        ? 'border-[#E8192C] bg-[#E8192C]/10 shadow-[3px_3px_0_#E8192C]'
+                        : 'border-[#333] bg-[#1A1A1A] hover:border-[#FFD700] hover:shadow-[3px_3px_0_#FFD700]'
+                      }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <MapPin
+                        className={`w-4 h-4 flex-shrink-0 mt-0.5 transition-colors ${isActive ? 'text-[#E8192C]' : 'text-[#A0A0A0] group-hover:text-[#FFD700]'}`}
+                      />
+                      <div className="flex-1">
+                        <p className={`font-oswald font-semibold text-sm transition-colors ${isActive ? 'text-[#F5F5F0]' : 'text-[#A0A0A0] group-hover:text-[#F5F5F0]'}`}>
+                          {venue.name}
                         </p>
-                      )}
+                        {isActive && venueInfo[venue.id] && (
+                          <p className="font-oswald text-xs text-[#A0A0A0] mt-1 leading-relaxed">
+                            {venueInfo[venue.id].description}
+                          </p>
+                        )}
+                      </div>
+                      {isActive && <span className="text-[#E8192C] text-xs font-bangers">▶</span>}
                     </div>
-                  </div>
-                </button>
-              ))}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* Selected Venue Details */}
+        {/* ── Selected Venue Details ── */}
         {selectedVenue && venueInfo[selectedVenue] && (
-          <div className="mt-12 scale-in">
-            <div className="glass rounded-2xl p-4 sm:p-8 border-l-4 border-pink-500">
-              <div className="flex items-start gap-4 mb-6">
-                <Info className="w-6 h-6 text-pink-400 flex-shrink-0" />
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    {venues.find((v) => v.id === selectedVenue)?.name}
+          <div className="mt-8 sm:mt-10 scale-in">
+            <div
+              className="comic-frame border-l-8"
+              style={{ background: '#111', borderLeftColor: '#E8192C' }}
+            >
+              <div className="stripe-header px-4 sm:px-6 py-3 border-b-2 border-[#111]">
+                <div className="flex items-center gap-3">
+                  <Info className="w-5 h-5 text-[#FFD700]" />
+                  <h3
+                    className="font-bangers text-[#FFD700] tracking-widest"
+                    style={{ fontSize: 'clamp(1.2rem, 3vw, 1.8rem)' }}
+                  >
+                    {venues.find((v) => v.id === selectedVenue)?.name.toUpperCase()}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {venueInfo[selectedVenue].description}
-                  </p>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {venueInfo[selectedVenue].facilities.map((facility, i) => (
-                      <div
-                        key={i}
-                        className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-3 text-center"
-                      >
-                        <p className="text-sm text-cyan-400 font-semibold">
-                          {facility}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                </div>
+              </div>
+              <div className="p-4 sm:p-6">
+                <p className="font-oswald text-[#A0A0A0] mb-5 text-sm sm:text-base">
+                  {venueInfo[selectedVenue].description}
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {venueInfo[selectedVenue].facilities.map((facility, i) => (
+                    <div
+                      key={i}
+                      className="comic-panel text-center py-3 px-2"
+                      style={{ background: '#1A1A1A' }}
+                    >
+                      <p className="font-oswald font-semibold text-xs sm:text-sm text-[#FFD700]">
+                        {facility}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Campus Guide */}
-        <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          <div className="glass rounded-xl p-6">
-            <h4 className="text-xl font-bold text-cyan-400 mb-4">Getting Around</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>✓ Campus shuttle available every 15 minutes</li>
-              <li>✓ Free WiFi throughout the campus</li>
-              <li>✓ Parking available at designated areas</li>
-              <li>✓ First Aid centers at all major venues</li>
+        {/* ── Info panels — Getting Around & Quick Tips ── */}
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <div className="comic-panel" style={{ background: '#111' }}>
+            <div className="bg-[#1A6EBF] px-4 py-3 border-b-2 border-[#111]">
+              <h4 className="font-bangers text-[#FFD700] tracking-widest text-lg">
+                🧭 GETTING AROUND
+              </h4>
+            </div>
+            <ul className="p-4 space-y-2.5">
+              {[
+                'Campus shuttle available every 15 minutes',
+                'Free WiFi throughout the campus',
+                'Parking available at designated areas',
+                'First Aid centers at all major venues',
+              ].map((tip, i) => (
+                <li key={i} className="flex items-start gap-2 font-oswald text-sm text-[#A0A0A0]">
+                  <span className="text-[#E8192C] font-bold mt-0.5">✓</span>
+                  {tip}
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="glass rounded-xl p-6">
-            <h4 className="text-xl font-bold text-pink-400 mb-4">Quick Tips</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>✓ Arrive 30 minutes early for your events</li>
-              <li>✓ Download the campus map for offline access</li>
-              <li>✓ Check the schedule for venue changes</li>
-              <li>✓ Ask volunteers for directions</li>
+
+          <div className="comic-panel" style={{ background: '#111' }}>
+            <div className="bg-[#E8192C] px-4 py-3 border-b-2 border-[#111]">
+              <h4 className="font-bangers text-[#FFD700] tracking-widest text-lg">
+                ⚡ QUICK TIPS
+              </h4>
+            </div>
+            <ul className="p-4 space-y-2.5">
+              {[
+                'Arrive 30 minutes early for your events',
+                'Download the campus map for offline access',
+                'Check the schedule for venue changes',
+                'Ask volunteers for directions',
+              ].map((tip, i) => (
+                <li key={i} className="flex items-start gap-2 font-oswald text-sm text-[#A0A0A0]">
+                  <span className="text-[#FFD700] font-bold mt-0.5">★</span>
+                  {tip}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
+
+      <div className="comic-divider mt-10" />
     </section>
   );
 }

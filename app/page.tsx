@@ -10,31 +10,52 @@ export default function Home() {
     <main className="min-h-screen w-full overflow-x-hidden bg-background">
       <Navigation />
 
-      {/* Hero Section */}
-      <section id="hero" className="pt-16">
+      {/* Hero */}
+      <section id="hero" className="pt-[calc(2.5rem+1.75rem)] sm:pt-[calc(2.5rem+2rem)]">
         <HeroSection />
       </section>
 
-      {/* Events Section */}
+      {/* Events */}
       <section id="events">
         <EventsSection />
       </section>
 
-      {/* Vendors Section */}
+      {/* Vendors */}
       <section id="vendors">
         <VendorsSection />
       </section>
 
-      <section id="schedule" className="py-10 sm:py-12 px-4 flex justify-center">
-        <a
-          href="/timeline"
-          className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold text-sm sm:text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 text-center"
-        >
-          ⏰ View Full Event Timeline →
-        </a>
+      {/* Timeline CTA */}
+      <section
+        id="schedule"
+        className="py-10 sm:py-14 px-4 flex justify-center relative"
+        style={{ background: 'linear-gradient(180deg, #0D0D0D, #140508, #0D0D0D)' }}
+      >
+        {/* Background dots */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(232,25,44,0.1) 1px, transparent 1px)',
+            backgroundSize: '18px 18px',
+          }}
+        />
+        <div className="relative z-10 text-center space-y-4">
+          <p className="font-bangers text-[#A0A0A0] tracking-[0.2em] text-sm">
+            — YOUR MISSION AWAITS —
+          </p>
+          <a
+            href="/timeline"
+            className="action-btn text-base sm:text-lg px-7 sm:px-10 py-3 sm:py-4 inline-flex"
+          >
+            ⏰ View Full Event Timeline →
+          </a>
+          <p className="font-oswald text-xs text-[#A0A0A0] tracking-wider">
+            3 days · 12+ events · One legendary techfest
+          </p>
+        </div>
       </section>
 
-      {/* Campus Map Section */}
+      {/* Campus Map */}
       <section id="map">
         <CampusMapSection />
       </section>

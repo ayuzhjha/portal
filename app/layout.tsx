@@ -1,16 +1,26 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Bangers, Oswald } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const bangers = Bangers({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-bangers',
+  display: 'swap',
+});
+
+const oswald = Oswald({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-oswald',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Synchronize Portal',
   description: 'Join Synchronize 4.0, the premier techfest featuring hackathons, robotics competitions, esports tournaments, and cultural events. 3 days of innovation, competition, and celebration.',
   keywords: 'techfest, hackathon, robotics, esports, innovation, competitions',
-  generator: 'v0.app',
   openGraph: {
     title: 'Synchronize 4.0 - The Ultimate Techfest',
     description: 'Join 3 days of innovation, competition, and celebration',
@@ -29,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className="font-sans antialiased overflow-x-hidden scroll-smooth">
+    <html lang="en" className={`dark ${bangers.variable} ${oswald.variable}`}>
+      <body className={`${oswald.className} antialiased overflow-x-hidden scroll-smooth`}>
         {children}
         <Analytics />
       </body>

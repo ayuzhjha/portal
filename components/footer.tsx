@@ -1,120 +1,142 @@
 'use client';
 
-import { Mail, Phone, MapPin, MessageCircle, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-slate-900 to-background border-t border-slate-700">
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Branding */}
-          <div className="col-span-1">
-            <h3 className="text-2xl font-bold mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">
-                SYNCHRONIZE 4.0
-              </span>
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              The ultimate techfest where innovation meets competition.
-            </p>
+    <footer
+      className="relative halftone-bg"
+      style={{ background: '#0D0D0D', borderTop: '5px solid #E8192C' }}
+    >
+      {/* Decorative action lines at top */}
+      <div className="comic-divider" />
+
+      <div className="container mx-auto px-4 py-14">
+        {/* ── 4-column comic strip grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8 mb-10">
+
+          {/* Panel 1 — Branding */}
+          <div className="comic-panel md:col-span-1" style={{ background: '#1A1A1A' }}>
+            <div className="stripe-header px-4 py-3 border-b-2 border-[#111]">
+              <h3
+                className="font-bangers text-[#FFD700] tracking-widest leading-none"
+                style={{ fontSize: 'clamp(1.3rem, 3vw, 1.8rem)', textShadow: '2px 2px 0 #111' }}
+              >
+                SYNCHRONIZE<br />
+                <span className="text-[#E8192C]">4.0</span>
+              </h3>
+            </div>
+            <div className="p-4">
+              <p className="font-oswald text-[#A0A0A0] text-sm">
+                The ultimate techfest where innovation meets competition. Three days. One universe.
+              </p>
+              <div className="flex items-center gap-2 mt-3">
+                <span className="w-2 h-2 rounded-full bg-[#E8192C] animate-pulse" />
+                <span className="font-oswald text-xs text-[#E8192C] uppercase tracking-widest">Registrations Open</span>
+              </div>
+            </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold text-foreground mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="#events" className="hover:text-cyan-400 transition-colors">
-                  Events
+          {/* Panel 2 — Quick Links */}
+          <div className="comic-panel" style={{ background: '#1A1A1A' }}>
+            <div className="bg-[#1A1A1A] border-b-2 border-[#333] px-4 py-3">
+              <h4 className="font-bangers text-[#F5F5F0] tracking-widest text-base">
+                ⚡ QUICK LINKS
+              </h4>
+            </div>
+            <ul className="p-4 space-y-2">
+              {[
+                { href: '#events', label: 'Events' },
+                { href: '#schedule', label: 'Schedule' },
+                { href: '#vendors', label: 'Vendors' },
+                { href: '#map', label: 'Campus Map' },
+              ].map(({ href, label }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="flex items-center gap-2 font-oswald text-sm text-[#A0A0A0] hover:text-[#FFD700] transition-colors group"
+                  >
+                    <span className="text-[#E8192C] group-hover:text-[#FFD700] transition-colors">▶</span>
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Panel 3 — Contact */}
+          <div className="comic-panel" style={{ background: '#1A1A1A' }}>
+            <div className="bg-[#1A1A1A] border-b-2 border-[#333] px-4 py-3">
+              <h4 className="font-bangers text-[#F5F5F0] tracking-widest text-base">
+                📡 CONTACT US
+              </h4>
+            </div>
+            <ul className="p-4 space-y-3">
+              <li className="flex items-center gap-2 text-[#A0A0A0] hover:text-[#E8192C] transition-colors">
+                <Mail className="w-4 h-4 text-[#E8192C] flex-shrink-0" />
+                <a href="mailto:info@synchronize.tech" className="font-oswald text-sm">
+                  info@synchronize.tech
                 </a>
               </li>
-              <li>
-                <a href="#schedule" className="hover:text-cyan-400 transition-colors">
-                  Schedule
+              <li className="flex items-center gap-2 text-[#A0A0A0] hover:text-[#FFD700] transition-colors">
+                <Phone className="w-4 h-4 text-[#FFD700] flex-shrink-0" />
+                <a href="tel:+918800000000" className="font-oswald text-sm">
+                  +91 8800000000
                 </a>
               </li>
-              <li>
-                <a href="#vendors" className="hover:text-cyan-400 transition-colors">
-                  Vendors
-                </a>
-              </li>
-              <li>
-                <a href="#map" className="hover:text-cyan-400 transition-colors">
-                  Campus Map
-                </a>
+              <li className="flex items-start gap-2 text-[#A0A0A0]">
+                <MapPin className="w-4 h-4 text-[#F5F5F0] flex-shrink-0 mt-0.5" />
+                <span className="font-oswald text-sm">SCSE, XIM University</span>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-bold text-foreground mb-4">Contact Us</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors">
-                <Mail className="w-4 h-4 flex-shrink-0" />
-                <a href="mailto:info@synchronize.tech">info@synchronize.tech</a>
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <a href="tel:+918800000000">+91 8800000000</a>
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>Tech Campus, City</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <h4 className="font-bold text-foreground mb-4">Follow Us</h4>
-            <div className="space-y-2 text-sm">
-              <a
-                href="#"
-                className="flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Instagram
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Twitter
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                LinkedIn
-              </a>
+          {/* Panel 4 — Follow */}
+          <div className="comic-panel" style={{ background: '#1A1A1A' }}>
+            <div className="bg-[#1A1A1A] border-b-2 border-[#333] px-4 py-3">
+              <h4 className="font-bangers text-[#F5F5F0] tracking-widest text-base">
+                🌐 FOLLOW US
+              </h4>
+            </div>
+            <div className="p-4 space-y-2.5">
+              {[
+                { label: 'Instagram', icon: MessageCircle },
+                { label: 'Twitter', icon: MessageCircle },
+                { label: 'LinkedIn', icon: MessageCircle },
+              ].map(({ label, icon: Icon }) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="flex items-center gap-2 font-oswald text-sm text-[#A0A0A0] hover:text-[#FFD700] transition-colors group"
+                >
+                  <Icon className="w-4 h-4 text-[#E8192C] group-hover:text-[#FFD700] transition-colors" />
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 mb-8" />
-
-        {/* Help Desk Section - JARVIS Command */}
-        <div className="glass rounded-xl p-8 mb-8 border-l-4 border-cyan-400">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h4 className="text-xl font-bold text-cyan-400 mb-2 font-mono">
-                📡 JARVIS COMMAND CENTER
-              </h4>
-              <p className="text-muted-foreground">
-                "I am here to assist. If you encounter any difficulties, my support protocols are standing by 24/7."
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <button className="px-6 py-3 rounded-lg bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 font-semibold hover:bg-cyan-500/30 transition-colors flex items-center gap-2">
+        {/* ── JARVIS Command CTA — speech bubble style ── */}
+        <div
+          className="comic-frame mb-8 border-l-8"
+          style={{ background: '#111', borderLeftColor: '#FFD700' }}
+        >
+          <div className="stripe-header px-5 py-3 border-b-2 border-[#111]">
+            <h4 className="font-bangers text-[#FFD700] tracking-widest text-lg sm:text-xl">
+              📡 JARVIS COMMAND CENTER
+            </h4>
+          </div>
+          <div className="p-5 flex flex-col md:flex-row items-center justify-between gap-5">
+            <p className="font-oswald text-[#A0A0A0] italic text-sm sm:text-base max-w-lg">
+              "I am here to assist. If you encounter any difficulties, my support protocols are standing by 24/7, sir."
+            </p>
+            <div className="flex gap-3 flex-shrink-0">
+              <button className="action-btn text-sm py-2.5 px-5">
                 <MessageCircle className="w-4 h-4" />
                 Chat Support
               </button>
-              <button className="px-6 py-3 rounded-lg bg-pink-500/20 border border-pink-500/50 text-pink-400 font-semibold hover:bg-pink-500/30 transition-colors flex items-center gap-2">
+              <button className="action-btn action-btn-gold text-sm py-2.5 px-5">
                 <Mail className="w-4 h-4" />
                 Email Us
               </button>
@@ -122,34 +144,27 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Marvel Quote Section */}
-        <div className="glass rounded-xl p-6 mb-8 text-center">
-          <p className="text-cyan-300 italic">
-            "If you are nothing without the suit, then you shouldn't have it. But with JARVIS and Synchronize 4.0, you'll have everything you need. Welcome to the arena, hero."
+        {/* ── Marvel Quote ── */}
+        <div className="thought-bubble text-center mb-8">
+          <p className="font-oswald italic text-[#333] text-sm sm:text-base">
+            "If you are nothing without the suit, then you shouldn't have it. But with JARVIS and Synchronize 4.0, you'll have everything you need."
           </p>
-          <p className="text-xs text-muted-foreground mt-2">- JARVIS Protocol</p>
+          <p className="font-bangers text-[#E8192C] text-xs mt-2 tracking-wider">— JARVIS PROTOCOL</p>
         </div>
 
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>&copy; 2025 SYNCHRONIZE 4.0 | Powered by J.A.R.V.I.S</p>
+        {/* ── Bottom bar ── */}
+        <div className="comic-divider mb-5" />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#A0A0A0] font-oswald">
+          <p>© 2025 SYNCHRONIZE 4.0 | Powered by J.A.R.V.I.S.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-cyan-400 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">
-              FAQ
-            </a>
+            {['Privacy Policy', 'Terms of Service', 'FAQ'].map((link) => (
+              <a key={link} href="#" className="hover:text-[#FFD700] transition-colors">
+                {link}
+              </a>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-10 bg-cyan-500 -z-10" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-10 bg-pink-500 -z-10" />
     </footer>
   );
 }
