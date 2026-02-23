@@ -23,8 +23,8 @@ export function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${scrolled
-          ? 'bg-[#0D0D0D] border-b-4 border-[#E8192C]'
-          : 'bg-[#0D0D0D]/90 border-b-4 border-[#E8192C]/60'
+        ? 'bg-[#0D0D0D] border-b-4 border-[#E8192C]'
+        : 'bg-[#0D0D0D]/90 border-b-4 border-[#E8192C]/60'
         }`}
       style={{ boxShadow: scrolled ? '0 4px 0 #111' : 'none' }}
     >
@@ -46,17 +46,13 @@ export function Navigation() {
         <div className="flex items-center justify-between h-14 sm:h-16">
 
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group flex-shrink-0">
+          <a href="https://synchronize-xim.in" className="flex items-center gap-3 group flex-shrink-0">
             <img
-              src="/logo.png"
+              src="/synclogo.png"
               alt="Synchronize 4.0"
-              className="h-7 sm:h-9 w-auto object-contain"
+              className="h-9 sm:h-12 w-auto object-contain"
             />
-            <span
-              className="font-bangers text-xl sm:text-2xl text-[#F5F5F0] tracking-widest hidden sm:block group-hover:text-[#FFD700] transition-colors duration-200"
-            >
-              SYNCHRONIZE
-            </span>
+
           </a>
 
           {/* Desktop Nav */}
@@ -75,7 +71,7 @@ export function Navigation() {
 
             {/* CTA Badge */}
             <a
-              href="#events"
+              href="https://synchronize-xim.in"
               className="action-btn ml-4 text-sm py-2 px-5"
             >
               JOIN NOW

@@ -74,14 +74,14 @@ export function Footer() {
             <ul className="p-4 space-y-3">
               <li className="flex items-center gap-2 text-[#A0A0A0] hover:text-[#E8192C] transition-colors">
                 <Mail className="w-4 h-4 text-[#E8192C] flex-shrink-0" />
-                <a href="mailto:info@synchronize.tech" className="font-oswald text-sm">
-                  info@synchronize.tech
+                <a href="mailto:techfest-scse@xim.edu.in" className="font-oswald text-sm">
+                  techfest-scse@xim.edu.in
                 </a>
               </li>
               <li className="flex items-center gap-2 text-[#A0A0A0] hover:text-[#FFD700] transition-colors">
                 <Phone className="w-4 h-4 text-[#FFD700] flex-shrink-0" />
-                <a href="tel:+918800000000" className="font-oswald text-sm">
-                  +91 8800000000
+                <a href="tel:+919855387275" className="font-oswald text-sm">
+                  +91 9855387275
                 </a>
               </li>
               <li className="flex items-start gap-2 text-[#A0A0A0]">
@@ -99,20 +99,15 @@ export function Footer() {
               </h4>
             </div>
             <div className="p-4 space-y-2.5">
-              {[
-                { label: 'Instagram', icon: MessageCircle },
-                { label: 'Twitter', icon: MessageCircle },
-                { label: 'LinkedIn', icon: MessageCircle },
-              ].map(({ label, icon: Icon }) => (
-                <a
-                  key={label}
-                  href="#"
-                  className="flex items-center gap-2 font-oswald text-sm text-[#A0A0A0] hover:text-[#FFD700] transition-colors group"
-                >
-                  <Icon className="w-4 h-4 text-[#E8192C] group-hover:text-[#FFD700] transition-colors" />
-                  {label}
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/synchronize_xim/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-oswald text-sm text-[#A0A0A0] hover:text-[#FFD700] transition-colors group"
+              >
+                <MessageCircle className="w-4 h-4 text-[#E8192C] group-hover:text-[#FFD700] transition-colors" />
+                Instagram
+              </a>
             </div>
           </div>
         </div>
@@ -132,14 +127,22 @@ export function Footer() {
               "I am here to assist. If you encounter any difficulties, my support protocols are standing by 24/7, sir."
             </p>
             <div className="flex gap-3 flex-shrink-0">
-              <button className="action-btn text-sm py-2.5 px-5">
+              <a
+                href="https://wa.me/919855387275"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="action-btn text-sm py-2.5 px-5"
+              >
                 <MessageCircle className="w-4 h-4" />
                 Chat Support
-              </button>
-              <button className="action-btn action-btn-gold text-sm py-2.5 px-5">
+              </a>
+              <a
+                href="mailto:techfest-scse@xim.edu.in"
+                className="action-btn action-btn-gold text-sm py-2.5 px-5"
+              >
                 <Mail className="w-4 h-4" />
                 Email Us
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -156,13 +159,6 @@ export function Footer() {
         <div className="comic-divider mb-5" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#A0A0A0] font-oswald">
           <p>© 2025 SYNCHRONIZE 4.0 | Powered by J.A.R.V.I.S.</p>
-          <div className="flex gap-4">
-            {['Privacy Policy', 'Terms of Service', 'FAQ'].map((link) => (
-              <a key={link} href="#" className="hover:text-[#FFD700] transition-colors">
-                {link}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

@@ -162,7 +162,7 @@ export function HeroSection() {
               <a href="#events" className="action-btn text-base px-6 py-3">
                 ⚡ View Events
               </a>
-              <a href="#schedule" className="action-btn action-btn-gold text-base px-6 py-3">
+              <a href="https://synchronize-xim.in/#schedule" className="action-btn action-btn-gold text-base px-6 py-3">
                 📅 Schedule
               </a>
             </div>
